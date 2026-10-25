@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品测试版 - 抢先体验</title>
+    <style>
+        /* ===== 全局变量与基础设置 ===== */
+        :root {
+            --primary-color: #4f46e5; /* 靛蓝色主题 */
+            --primary-hover: #4338ca;
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* ===== 导航栏 ===== */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            background: var(--primary-color);
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: normal;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* ===== Hero 区域 ===== */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        /* ===== 功能亮点 ===== */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+        }
+
+        /* ===== 注册表单 ===== */
+        .signup-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        .signup-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .signup-section p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .signup-form {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .signup-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .signup-form input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .signup-form button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .signup-form button:hover {
+            background: var(--primary-hover);
+        }
+
+        .message {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            display: none;
+        }
+
+        /* ===== 页脚 ===== */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ===== 响应式适配 ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .signup-form { flex-direction: column; }
+            .nav-links { display: none; } /* 移动端隐藏导航链接以保持简洁 */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav>
+        <div class="logo">
+            CodeGeeX <span>Beta</span>
+        </div>
+        <div class="nav-links">
+            <a href="#features">功能</a>
+            <a href="#signup">早期访问</a>
+            <a href="#">文档</a>
+        </div>
+    </nav>
+
+    <!-- 核心区域 -->
+    <section class="hero">
+        <h1>欢迎体验下一代智能平台</h1>
+        <p>我们正在打磨革命性的产品体验，现在加入测试版，成为首批探索者，与我们一起定义未来。</p>
+        <a href="#signup" class="cta-button">申请测试资格</a>
+    </section>
+
+    <!-- 功能亮点 -->
+    <section id="features" class="features">
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>极致性能</h3>
+            <p>底层架构全面重构，响应速度提升 300%，让您的操作如丝般顺滑。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>安全可靠</h3>
+            <p>采用端到端加密与零信任架构，您的数据隐私得到最高级别的保护。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>AI 驱动</h3>
+            <p>内置先进的大语言模型，理解您的意图，主动提供最优解决方案。</p>
+        </div>
+    </section>
+
+    <!-- 注册表单 -->
+    <section id="signup" class="signup-section">
+        <h2>加入等待列表</h2>
+        <p>测试名额有限，留下您的邮箱，我们将在第一时间发送邀请码。</p>
+        <form class="signup-form" id="inviteForm">
+            <input type="email" id="emailInput" placeholder="请输入您的工作邮箱" required>
+            <button type="submit">提交申请</button>
+        </form>
+        <div class="message" id="successMessage">🎉 提交成功！我们将尽快与您联系。</div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>&copy; 2023 CodeGeeX Beta. 保留所有权利。</p>
+    </footer>
+
+    <!-- 交互脚本 -->
+    <script>
+        document.getElementById('inviteForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 阻止表单默认提交行为
+            
+            const emailInput = document.getElementById('emailInput');
+            const successMessage = document.getElementById('successMessage');
+            
+            if(emailInput.value) {
+                // 模拟提交过程
+                const submitButton = this.querySelector('button');
+                submitButton.textContent = '提交中...';
+                submitButton.disabled = true;
+
+                setTimeout(() => {
+                    // 显示成功消息
+                    successMessage.style.display = 'block';
+                    emailInput.value = '';
+                    submitButton.textContent = '提交申请';
+                    submitButton.disabled = false;
+                    
+                    // 3秒后隐藏成功消息
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 3000);
+                }, 1000);
+            }
+        });
+    </script>
+
+</body>
+</html>
